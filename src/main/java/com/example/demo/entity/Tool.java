@@ -28,11 +28,20 @@ public class Tool {
     @Column(name = "detail")
     private String detail;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", insertable = false, updatable = false)
+    @Column(name = "created_at", insertable = true, updatable = false)
     private Date created_at;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at",  insertable = false, updatable = false)
+    @Column(name = "updated_at")
     private Date updated_at;
+
+    @PrePersist
+    public void onPrePersist() {
+        setCreated_at(new Date());
+        setUpdated_at(new Date());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        setUpdated_at(new Date());
+    }
 }
