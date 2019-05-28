@@ -38,4 +38,9 @@ public class ToolService {
     public void deleteById(Long id) {
         toolRepository.deleteById(id);
     }
+
+    // 組織の未登録ツール全件取得
+    public List<Tool> getUnregisteredOrganizationTools(Long organization_id) {
+        return toolRepository.getUnregisteredOrganizationTools(organization_id);
+    }
 }

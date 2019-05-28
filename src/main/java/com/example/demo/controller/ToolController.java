@@ -55,4 +55,11 @@ public class ToolController {
     public void deleteById(@PathVariable("id") Long id) {
         toolService.deleteById(id);
     }
+
+    // 組織ツール未登録全件取得
+    @GetMapping("unregistered/{organization_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Tool> getUnregisteredOrganizationTools(@PathVariable("organization_id") Long organization_id) {
+        return toolService.getUnregisteredOrganizationTools(organization_id);
+    }
 }
