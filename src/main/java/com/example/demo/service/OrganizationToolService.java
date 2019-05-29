@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.OrganizationTool;
-import com.example.demo.entity.Tool;
 import com.example.demo.repository.OrganizationToolRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-// ツール操作のロジック
+// 組織ツール操作のロジック
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -30,9 +29,9 @@ public class OrganizationToolService {
     }
 
     // 組織ツール名検索
-//    public Optional<OrganizationTool> findByName(String name) {
-//        return organizationToolRepository.findByName(name);
-//    }
+    public List<OrganizationTool> findByName(Long organization_id, String name) {
+        return organizationToolRepository.findByName(organization_id, name);
+    }
 
     // 組織ツール作成、更新
     public OrganizationTool save(OrganizationTool organizationTool) {

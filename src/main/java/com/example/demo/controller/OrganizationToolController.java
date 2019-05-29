@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.OrganizationTool;
-import com.example.demo.entity.Tool;
 import com.example.demo.service.OrganizationToolService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -50,11 +49,12 @@ public class OrganizationToolController {
     }
 
     // 組織ツール名検索
-//    @GetMapping("/search")
-//    @ResponseStatus(HttpStatus.OK)
-//    public OrganizationTool getOrganizationToolByName(@RequestParam("name") String name) {
-//        return organizationToolService.findByName(name).orElseThrow(RuntimeException::new);
-//    }
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    public List<OrganizationTool> getOrganizationToolByName(@PathVariable("organization_id") Long organization_id, @RequestParam("name") String name) {
+        System.out.println("name:" + name);
+        return organizationToolService.findByName(organization_id, name);
+    }
 
     // 組織ツール削除
     @RequestMapping(method = RequestMethod.DELETE, value = "{id}")
